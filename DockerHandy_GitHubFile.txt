@@ -1,0 +1,98 @@
+
+****************Docker D1 ********************
+
+Docker Components:
+	
+	Docker images:		Instruction to create/run a container 
+	Docker container:	Created using Docker Images/ insolated environment to run our application
+	Docker file:		Written Instruction to create our own customised image
+	Docker hub:			Online Repository For Docker images  / hub.docker.com
+
+Prerequisite:
+
+	OS should be 64 bit
+	Linux kernel ver 3.10 or greater
+
+Installation Instruction: Ubunutu
+
+	STEP 1 - Connect to Linux system ( create ec2(ubuntu) server via aws console)
+
+	STEP 2 - Install DOCKER
+		
+		# sudo -i 		:To login as root
+		# apt-get update
+		# apt install docker.io -y
+	
+	STEP 3 - To check Docker Version /info
+		
+		# docker info
+		
+	STEP 4 - To Provide info about the container
+
+		a.# docker images 	: list  images present locally
+		b.# docker ps  		: To get list of running containers
+		c.# docker ps -a 	: To get list of all containers
+		
+	STEP 5 - To List the Images
+		
+		# docker images
+	
+	STEP 6 - To Install Docker Images from Docker Hub
+	
+		# docker pull httpd
+		
+	STEP 6 - To Create Multiple Container using Docker Images
+	
+		# docker run -itd -p "8080:80" httpd (or "ImageID") (i - Input/Interactive, t - Terminal, d - Detect), (p - port forwarding)
+		
+	STEP 7 - To Execute Docker
+	
+		# docker exec -it "ContainerID" /bin/bash
+		
+	STEP 8 - To list items
+	
+		# ls - lrt
+		
+	STEP 9 - Locate to Path of Index.html (Deployment path: /usr/local/apache2/htdocs)
+	
+		# cd htdocs/
+		
+	STEP 10 - To Install vi
+	
+		# apt-get update
+		# apt install vim
+		
+	STEP 11 - To Edit index.html
+	
+		# vi index.html
+		# Change index.html
+		
+========================================================================================================================================
+
+	To create a container (here CID refers Container ID)
+
+		# docker run -itd -p "85:80" httpd 	:(Create a httpd contianer running on port 80 to verify "IP:80"
+		# docker exec -it CID /bin/bash 	:(Using this command we can go insdie the container using bash terminal )
+		# docker stop ContainerID 			:(To stop running container)
+		# docker rm ContainerID 			:(To remove the stopped container)
+		# docker rm -f ContainerID 			:(To remove the running container forcefully)
+		# docker rmi 						:(To remove the unused Docker image from our server)
+		# docker stats 						:(Provide complete information about all the container )
+		# docker top CID 					:(Provide informaton about one particular container)
+		# docker inspect CID 				:(Provide information abt one particular container in detail
+		# docker logs CID 					:(Provide complete log of a container)
+		# docker ps -a                      :(To list all the container including stopped)
+		
+=========================================================================================================================================
+
+Task:
+
+	Install NGINX
+	
+	STEP: To download NGINX without using pull command
+	
+	# docker run -itd -p "82:80" --name WebServer1 nginx
+	# docker run -itd -p "83:80" --name WebServer2 nginx
+	# docker run -itd -p "84:80" --name WebServer1 httpd
+	
+	INSTALL WEB IIS SERVER
